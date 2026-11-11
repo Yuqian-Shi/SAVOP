@@ -3,7 +3,7 @@
   "release": "v0.1.0-alpha",
   "qualification_date": "2026-11-10",
   "source_archive_git_tree": "9987f9ca9ed483e1e7fc78794a9c6b3d0f59feb2",
-  "tree_note": "Clean archive and network candidate have the same functional source. Final release adds documentation, CI adjustments and this summary.",
+  "tree_note": "Clean archive and network candidate have the same Rust, router and network-test source. Final release adds documentation, CI adjustments, this summary and a ShellCheck-compatible spelling of benchmark cleanup; GitHub CI checks the release commit.",
   "clean_source": {
     "rust_tests_passed": 71,
     "rust_checks": [

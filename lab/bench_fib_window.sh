@@ -114,7 +114,11 @@ cleanup_labs() {
   if [ -d "$BENCH_ROOT" ]; then
     find "$BENCH_ROOT" -maxdepth 3 -name destroy_clab.sh -type f -perm -111 -print0 |
       while IFS= read -r -d '' destroy; do
-        (cd "$(dirname "$destroy")" && "./$(basename "$destroy")" >/dev/null 2>&1 || true)
+        (
+          if cd "$(dirname "$destroy")"; then
+            "./$(basename "$destroy")" >/dev/null 2>&1 || true
+          fi
+        )
       done
   fi
   ip netns list | awk '/^clab-savop/ {print $1}' |
