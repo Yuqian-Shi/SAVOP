@@ -1,0 +1,290 @@
+{
+  "schema": "k5-scenario-design-v1",
+  "scenario_id": "TS01-BGP-01",
+  "title": "5-AS customer-edge route lifecycle and SAV baseline",
+  "status": "release_functional_fixture",
+  "purpose": "Compare source-validation behavior at a customer-facing provider ingress while exercising BGP convergence, route withdrawal and restoration, and peer-link failover.",
+  "scope": {
+    "as_count": 5,
+    "nodes_per_as": 10,
+    "router_nodes": 50,
+    "intra_as_links": 45,
+    "inter_as_links": 5,
+    "address_family": "IPv4",
+    "isolated_lab_only": true,
+    "public_bgp": false,
+    "asn_range": "private 32-bit ASN range",
+    "address_pool": "198.18.0.0/15"
+  },
+  "address_plan": {
+    "pS": "198.18.1.0/28",
+    "pD": "198.18.2.0/28",
+    "pK": "198.18.3.0/28",
+    "pX": "198.18.4.0/28",
+    "host_address": "first usable address in each /28; added as /32 only to the specified test endpoint"
+  },
+  "service_delivery": {
+    "destination_host": "198.18.2.1/32",
+    "endpoint": "V/r5",
+    "route": "V/r1 installs a host-only route via the V/r5 point-to-point link",
+    "route_scope": "kernel route on V/r1 only; not exported by BGP",
+    "rationale": "pD /28 remains originated by V/r1 as a blackhole route; the more-specific host route delivers test packets to the service endpoint"
+  },
+  "topology": {
+    "roles": {
+      "R": "common upstream provider",
+      "P": "regional provider and SAV test point",
+      "Q": "regional provider",
+      "S": "single-homed customer of P; probe source",
+      "V": "customer of Q; service and test-prefix origin"
+    },
+    "links": [
+      {
+        "a": "R",
+        "b": "P",
+        "relationship": "provider_customer",
+        "provider": "R",
+        "customer": "P"
+      },
+      {
+        "a": "R",
+        "b": "Q",
+        "relationship": "provider_customer",
+        "provider": "R",
+        "customer": "Q"
+      },
+      {
+        "a": "P",
+        "b": "Q",
+        "relationship": "peer"
+      },
+      {
+        "a": "P",
+        "b": "S",
+        "relationship": "provider_customer",
+        "provider": "P",
+        "customer": "S"
+      },
+      {
+        "a": "Q",
+        "b": "V",
+        "relationship": "provider_customer",
+        "provider": "Q",
+        "customer": "V"
+      }
+    ],
+    "intra_as_layout": {
+      "boundary_and_route_reflector": "r1",
+      "ibgp_clients": [
+        "r2",
+        "r3",
+        "r4",
+        "r5",
+        "r6",
+        "r7",
+        "r8",
+        "r9",
+        "r10"
+      ],
+      "sessions_per_as": 9,
+      "route_reflector_next_hop_behavior": "must be explicitly configured and verified"
+    },
+    "inter_as_bgp_sessions": 5,
+    "total_bgp_sessions": 50,
+    "policy": {
+      "local_preference_order": [
+        "customer:300",
+        "peer:200",
+        "provider:100"
+      ],
+      "export": "customer-learned and locally originated routes may be exported to all; peer/provider-learned routes only to customers",
+      "valley_free_export": true
+    },
+    "expected_paths": {
+      "normal": [
+        "S",
+        "P",
+        "Q",
+        "V"
+      ],
+      "after_p_q_peer_down": [
+        "S",
+        "P",
+        "R",
+        "Q",
+        "V"
+      ]
+    }
+  },
+  "prefix_truth": {
+    "pS": {
+      "origin": "S/r1",
+      "probe_endpoint": "S/r5",
+      "authorized_source_as": [
+        "S"
+      ],
+      "purpose": "legitimate source control"
+    },
+    "pD": {
+      "origin": "V/r1",
+      "service_endpoint": "V/r5",
+      "authorized_source_as": [
+        "V"
+      ],
+      "purpose": "stable destination/service; remains advertised during pK events"
+    },
+    "pK": {
+      "origin": "V/r1",
+      "address_endpoint": "V/r6",
+      "authorized_source_as": [
+        "V"
+      ],
+      "purpose": "known BGP route but unauthorized when used as a source by S; withdrawn using a dedicated static protocol"
+    },
+    "pX": {
+      "origin": null,
+      "advertised": false,
+      "authorized_source_as": [],
+      "purpose": "unknown and unauthorized source control"
+    }
+  },
+  "traffic": {
+    "source_node": "S/r5",
+    "destination_node": "V/r5",
+    "source_addresses": {
+      "pS": "198.18.1.1",
+      "pK": "198.18.3.1",
+      "pX": "198.18.4.1"
+    },
+    "destination_address": "198.18.2.1",
+    "checkpoint": "P/r1 ingress interface facing S",
+    "protocol": "one-way sequence-numbered UDP",
+    "probe_sources": [
+      "pS",
+      "pK",
+      "pX"
+    ],
+    "continuous_failover_stream": "low-rate sequence-numbered UDP to pD; rate and packet size frozen before execution",
+    "receiver_evidence": "capture at V/r5; do not infer SAV action from missing replies alone"
+  },
+  "arms": [
+    {
+      "name": "no_sav_control",
+      "mode": "none",
+      "probes": {
+        "pS": {
+          "received": 10,
+          "drop_delta": 0
+        },
+        "pK": {
+          "received": 10,
+          "drop_delta": 0
+        },
+        "pX": {
+          "received": 10,
+          "drop_delta": 0
+        }
+      }
+    },
+    {
+      "name": "strict_urpf",
+      "mode": "strict_urpf",
+      "probes": {
+        "pS": {
+          "received": 10,
+          "drop_delta": 0
+        },
+        "pK": {
+          "received": 0,
+          "drop_delta": 10
+        },
+        "pX": {
+          "received": 0,
+          "drop_delta": 10
+        }
+      }
+    },
+    {
+      "name": "loose_urpf",
+      "mode": "loose_urpf",
+      "probes": {
+        "pS": {
+          "received": 10,
+          "drop_delta": 0
+        },
+        "pK": {
+          "received": 10,
+          "drop_delta": 0
+        },
+        "pX": {
+          "received": 0,
+          "drop_delta": 10
+        }
+      }
+    }
+  ],
+  "event_sequence": [
+    {
+      "id": "E0",
+      "event": "Establish all BGP sessions and converge",
+      "gate": "all 50 sessions established; expected routes present in RIB/FIB; stable interval recorded"
+    },
+    {
+      "id": "E1",
+      "event": "Run no-SAV, strict-uRPF, then loose-uRPF in the same frozen topology; verify the active SAV mode at each arm",
+      "gate": "before and after every arm, the all-router BGP/FIB fingerprint equals the initial baseline; each probe's exact sequence set, bound source, receiver count, and SAV drop-counter delta match expectation"
+    },
+    {
+      "id": "E2",
+      "event": "Withdraw only pK using its dedicated static protocol at V/r1 in the loose-uRPF arm",
+      "expected": "after absence is confirmed in relevant RIB/FIB and SAV readback, pK probe drops; pD remains reachable"
+    },
+    {
+      "id": "E3",
+      "event": "Re-advertise pK at V/r1",
+      "expected": "after propagation and rule readback, loose-uRPF permits pK again; pD remains reachable"
+    },
+    {
+      "id": "E4",
+      "event": "While loose-uRPF is active, administratively disable and restore the P-Q peer link during a low-rate continuous pS-to-pD UDP stream",
+      "expected": "route to pD moves via R and returns via Q peer after restoration; pS remains authorized; record loss and each control/data-plane recovery timestamp"
+    }
+  ],
+  "measurements": [
+    "BGP session state and transition timestamps",
+    "Adj-RIB-In, Loc-RIB, and FIB route before/after each event",
+    "SAV rule generation, installation, and readback timestamps",
+    "per-packet source truth, ingress interface, decision, exact sequence set, SAV counter delta, and receiver capture",
+    "route convergence, rule convergence, packet-loss window, and service recovery as separate intervals"
+  ],
+  "acceptance": {
+    "control_plane": "all 50 BGP sessions established; expected routes and selected paths match the frozen topology; a common stable interval of at least 3 seconds is recorded",
+    "sav_arm_isolation": "the all-router BGP/FIB fingerprint before and after every SAV arm equals the initial fingerprint",
+    "per_probe": "each 10-packet probe matches the arm matrix for receiver count and drop-counter delta; packet records have unique in-range sequence IDs and the bound source address",
+    "independent_audit": "persist each received packet record and each full router BGP/FIB fingerprint so a separate verifier can recompute the checks without importing the runner",
+    "route_lifecycle": "pK withdrawal and restoration are confirmed in BGP/FIB and SAV-table readback before their respective probes",
+    "peer_failover": "the observed data path changes S-P-Q-V to S-P-R-Q-V on peer failure and returns after restoration; report all sent/received IDs and timestamps without imposing an unvalidated convergence SLA",
+    "resource_safety": "available memory remains at least 3 GiB and host Swap growth does not exceed 1 MiB; ownership-scoped cleanup leaves no run containers or temporary links"
+  },
+  "run_plan": {
+    "initial_smoke": "one 50-node deployment; run no-SAV, strict-uRPF, and loose-uRPF sequentially with explicit table removal between arms",
+    "assertion_recheck": "two completed runs on the same VM after hardening; r1 checked runtime assertions, r2 added full raw evidence and passed independent audit; neither is a confirmatory repeat",
+    "engineering_rechecks": 3,
+    "recheck_unit": "three further full teardowns and rebuilds after freezing the scenario, runner, and verifier; technical repetitions on the same host, not independent hardware replication",
+    "randomization": "fixed arm order for semantic smoke; freeze or seed arm order for later performance comparison",
+    "thresholds": "record raw results first; set performance acceptance thresholds only after platform capability and measurement resolution are established"
+  },
+  "implementation_gates": [
+    "compiler can build the 10-router-per-AS route-reflector layout",
+    "customer/peer/provider policy and expected path assertions pass",
+    "prefix withdrawal/re-advertisement reaches route and SAV rule readback",
+    "peer-link failure injection and recovery are observable",
+    "raw packet and full control-plane evidence can be independently rechecked",
+    "resource guard permits a 50-router deployment"
+  ],
+  "limitations": [
+    "Synthetic isolated IPv4 BGP regression, not an Internet-representative sample.",
+    "The multihoming calibration fixture is a separate test and not TS01 evidence.",
+    "Same-VM repetitions do not establish independent hardware replication, capacity or an application SLA."
+  ]
+}

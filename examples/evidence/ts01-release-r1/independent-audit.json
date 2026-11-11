@@ -1,0 +1,382 @@
+{
+  "schema": "ts01-independent-audit-v1",
+  "run_id": "release-r1",
+  "outcome": "passed",
+  "checks_passed": 44,
+  "checks_total": 44,
+  "input_sha256": {
+    "result.json": "b7f9c4980fb8bca7b3852735b0ac4e693b33e1ee411a5a000762f0b5b0387e37",
+    "ts01-bgp-01.json": "94221e3c7ec38e8be7ad2d902fb41f99e64661fa89b2e1d992bd6aa0feb8933e",
+    "scene.json": "2d829c240ecb517f281787c91f17d458820b0d853b989cb68a0f90e06451419b",
+    "run_ts01_bgp01.py": "9dec6dda321154518113c29675ad91521f54ad292cde16034341ef39ec30131e"
+  },
+  "verifier_sha256": "8b484badc8e5500647b14576562e6d925ae1f27810b088200fb249eb26aefc76",
+  "checks": [
+    {
+      "name": "runner_status",
+      "pass": true,
+      "detail": "passed_ts01_bgp01_functional_smoke"
+    },
+    {
+      "name": "scope_5_as_50_nodes",
+      "pass": true
+    },
+    {
+      "name": "input_provenance",
+      "pass": true,
+      "detail": {
+        "runner_sha256": "9dec6dda321154518113c29675ad91521f54ad292cde16034341ef39ec30131e",
+        "scenario_sha256": "94221e3c7ec38e8be7ad2d902fb41f99e64661fa89b2e1d992bd6aa0feb8933e"
+      }
+    },
+    {
+      "name": "scene_topology",
+      "pass": true,
+      "detail": {
+        "nodes": 50,
+        "unique_asns": 5,
+        "router_links": 50
+      }
+    },
+    {
+      "name": "state_fingerprint:initial",
+      "pass": true,
+      "detail": {
+        "stored": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "recomputed": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:initial",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:initial",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "state_fingerprint:before-none",
+      "pass": true,
+      "detail": {
+        "stored": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "recomputed": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:before-none",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:before-none",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "state_fingerprint:after-none",
+      "pass": true,
+      "detail": {
+        "stored": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "recomputed": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:after-none",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:after-none",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "state_fingerprint:before-strict_urpf",
+      "pass": true,
+      "detail": {
+        "stored": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "recomputed": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:before-strict_urpf",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:before-strict_urpf",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "state_fingerprint:after-strict_urpf",
+      "pass": true,
+      "detail": {
+        "stored": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "recomputed": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:after-strict_urpf",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:after-strict_urpf",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "state_fingerprint:before-loose_urpf",
+      "pass": true,
+      "detail": {
+        "stored": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "recomputed": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:before-loose_urpf",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:before-loose_urpf",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "state_fingerprint:after-loose_urpf",
+      "pass": true,
+      "detail": {
+        "stored": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "recomputed": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:after-loose_urpf",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:after-loose_urpf",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "state_fingerprint:pk-withdrawn",
+      "pass": true,
+      "detail": {
+        "stored": "465578859f2b2a34ed092fd404f13d556e5f13ae75dee6753112ab21b3b53a60",
+        "recomputed": "465578859f2b2a34ed092fd404f13d556e5f13ae75dee6753112ab21b3b53a60"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:pk-withdrawn",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:pk-withdrawn",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "state_fingerprint:pk-restored",
+      "pass": true,
+      "detail": {
+        "stored": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "recomputed": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:pk-restored",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:pk-restored",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "state_fingerprint:peer-down",
+      "pass": true,
+      "detail": {
+        "stored": "ee676d418545b9ab15f35d42b17281bde6e8634a8beec2d0bd9feeb2af8bd536",
+        "recomputed": "ee676d418545b9ab15f35d42b17281bde6e8634a8beec2d0bd9feeb2af8bd536"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:peer-down",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:peer-down",
+      "pass": true,
+      "detail": {
+        "P": "eth_1",
+        "Q": "eth_1"
+      }
+    },
+    {
+      "name": "state_fingerprint:peer-restored",
+      "pass": true,
+      "detail": {
+        "stored": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "recomputed": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6"
+      }
+    },
+    {
+      "name": "all_router_bgp_and_fib:peer-restored",
+      "pass": true,
+      "detail": {
+        "routers": 50,
+        "peer_sets_match": true,
+        "required_prefixes_match": true
+      }
+    },
+    {
+      "name": "selected_paths:peer-restored",
+      "pass": true,
+      "detail": {
+        "P": "eth_21",
+        "Q": "eth_11"
+      }
+    },
+    {
+      "name": "sav_arm_routes_unchanged",
+      "pass": true,
+      "detail": {
+        "baseline": "abda982e5b658b2bce0e814fddfb62f3c4a61350c55c33dfdca06fd92b85f2a6",
+        "compared_states": 6
+      }
+    },
+    {
+      "name": "runner_fingerprint_assertions",
+      "pass": true,
+      "detail": {
+        "passed": 6,
+        "total": 6
+      }
+    },
+    {
+      "name": "raw_packet_matrix",
+      "pass": true,
+      "detail": {
+        "probe_groups": 11,
+        "sent": 110,
+        "received": 70,
+        "drop_counter_delta": 40
+      }
+    },
+    {
+      "name": "prefix_lifecycle",
+      "pass": true,
+      "detail": {
+        "withdrawal_route_state_seconds": 4.247492644935846,
+        "restored_route_state_seconds": 4.265695260837674
+      }
+    },
+    {
+      "name": "peer_failover_stream_and_paths",
+      "pass": true,
+      "detail": {
+        "sent": 600,
+        "received": 600,
+        "missing": 0
+      }
+    },
+    {
+      "name": "resource_gate",
+      "pass": true,
+      "detail": {
+        "samples": 223,
+        "min_available_gib": 11.598224639892578,
+        "mean_cpu_percent": 4.834080717488789,
+        "max_swap_growth_mib": 0.0,
+        "startup_min_available_gib": 3,
+        "runtime_min_available_gib": 3,
+        "max_swap_growth_gate_mib": 1,
+        "pass": true
+      }
+    },
+    {
+      "name": "cleanup_and_host",
+      "pass": true,
+      "detail": {
+        "host_unchanged": true,
+        "cleanup_errors": []
+      }
+    }
+  ]
+}

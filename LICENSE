@@ -1,21 +1,39 @@
-MIT License
+SAVOP License Notice
 
-Copyright (c) 2024 NASP
+This repository is distributed under multiple licenses.
+
+Original SAV Open Playground copyright: Copyright (c) 2024 NASP.
+For retained or derived MIT-covered portions, the original copyright and
+permission notice are reproduced in LICENSES/MIT.txt. New contributions outside
+router/ are provided under the same MIT terms by their respective contributors.
+
+- SAVOP Rust agent code, lab orchestration code, configuration examples, and
+  documentation outside `router/` are licensed under the MIT License.
+- `router/` contains BIRD Internet Routing Daemon derived source code. That
+  code is licensed under GPL-2.0-or-later unless a file or the upstream
+  packaging copyright metadata states a different compatible license. See
+  `router/LICENSE` and `router/distro/pkg/deb/copyright`.
+
+Complete GPL v2 and LGPL v2/v2.1 texts are included under LICENSES/. Individual
+file headers and third-party notices take precedence over broad directory summaries.
+
+MIT License for SAVOP-owned code outside `router/`
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+of the SAVOP-owned software and associated documentation files outside
+`router/` (the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following
+conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.

@@ -1,0 +1,8 @@
+results/
+data/topologies/raw/
+base_configs/itdk_slices/
+*.runner.log
+*.orig
+*.bak
+*.tmp
+*~

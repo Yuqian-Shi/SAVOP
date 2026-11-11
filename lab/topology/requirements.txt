@@ -1,0 +1,3 @@
+-c ../../requirements-dev.lock
+networkx==3.5
+pybgpkit-parser==0.18.0

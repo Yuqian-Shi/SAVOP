@@ -1,0 +1,33 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN set -eux; \
+    if [ -f /etc/apt/sources.list ]; then \
+      sed -i 's|http://archive.ubuntu.com/ubuntu/|http://mirrors.aliyun.com/ubuntu/|g; s|http://security.ubuntu.com/ubuntu/|http://mirrors.aliyun.com/ubuntu/|g' /etc/apt/sources.list; \
+    fi; \
+    if [ -f /etc/apt/sources.list.d/ubuntu.sources ]; then \
+      sed -i 's|http://archive.ubuntu.com/ubuntu/|http://mirrors.aliyun.com/ubuntu/|g; s|http://security.ubuntu.com/ubuntu/|http://mirrors.aliyun.com/ubuntu/|g' /etc/apt/sources.list.d/ubuntu.sources; \
+    fi; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+      ca-certificates \
+      curl \
+      iperf \
+      iperf3 \
+      iproute2 \
+      iptables \
+      iputils-ping \
+      libgssapi-krb5-2 \
+      libpcap0.8 \
+      libreadline8t64 \
+      libssh-4 \
+      libssh-gcrypt-4 \
+      net-tools \
+      nftables \
+      sqlite3 \
+      tcpdump \
+      traceroute; \
+    rm -rf /var/lib/apt/lists/*
+
+CMD ["sleep", "infinity"]

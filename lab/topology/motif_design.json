@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "design_id": "k5-as-motif-sampling-20261019-v1",
+  "layers": ["ipv4", "ipv6"],
+  "sizes": [100, 1000],
+  "seeds": [240001, 240002, 240003],
+  "edge_domains": ["known"],
+  "algorithm": "multi-upstream-motif-frontier-v1",
+  "motif_target": "floor(size/10) distinct anchor ASes, each retains two distinct inferred providers",
+  "motif_purpose": "internal scenario coverage target, NOT measured Internet prevalence or a formal project KPI",
+  "seed_rule": "uniform among top ceil(1 percent) eligible nodes by domain degree, ties by ASN",
+  "anchor_rule": "seeded permutation of eligible ASes with at least two known providers; add each anchor, two seeded providers and a deterministic shortest adjacency path to root; reject bundles exceeding node budget; fail if target not reached",
+  "fill_rule": "largest unmet absolute full-union stratum quota on connected frontier",
+  "control": "same-size stratified uniform node sample without connectivity or motif constraints",
+  "boundary": "all full-union cut edges recorded, no synthetic reconnecting edges",
+  "unknown": "retain unknown/conflicting induced edges as inactive evidence; never infer peer",
+  "selection_bias": "motif anchors and connection paths oversample providers/core; diagnose against both full union and eligible known domain",
+  "replication": "same-source seed sensitivity, not independent Internet samples",
+  "acceptance": {
+    "required": ["exact_size", "domain_connected", "induced_edges_exact", "boundary_complete", "source_roles_preserved", "source_hash_matches", "seed_replay_equal", "all_declared_motif_anchors_retain_two_providers"],
+    "scientific_representativeness": "not established"
+  }
+}

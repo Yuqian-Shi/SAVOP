@@ -1,0 +1,48 @@
+{
+  "schema": "savop-public-ts01-subset-v1",
+  "kind": "transformed public evidence subset, not the untouched raw archive",
+  "source_artifact_sha256": {
+    "result.json": "a02d8072792a4265ed9613cf9796921ea9e468c7e0357abdd186cf21a9147baa",
+    "scene.json": "2d829c240ecb517f281787c91f17d458820b0d853b989cb68a0f90e06451419b",
+    "ts01-bgp-01.json": "94221e3c7ec38e8be7ad2d902fb41f99e64661fa89b2e1d992bd6aa0feb8933e",
+    "run_ts01_bgp01.py": "9dec6dda321154518113c29675ad91521f54ad292cde16034341ef39ec30131e",
+    "state-initial.json": "0d8c8756c08524c374450b9973c4a1911640c1bda6c3ec16f04b0d6cc7c3be50",
+    "state-before-none.json": "ea1befabcddb82277b3a3512b2223cc7bc331b49bbeea7fbabcefd7deeb6f194",
+    "state-after-none.json": "25ae58c12fa3a9b0d6a6c19d2af792a6c9dbe7291402d0e0ad7525e808847f27",
+    "state-before-strict_urpf.json": "54bd2a0e3176cc1aaf11488ee78f111c99d23f1b6fcf326cd185522bc95c6e13",
+    "state-after-strict_urpf.json": "4363b64a8dc4ec901a04bd0cf505f78cc46bbb3f3eeb4c1e35711a6fe8dfa7e7",
+    "state-before-loose_urpf.json": "00a2766ab7a8c8bce38a7223a60aaedcd6f723fc8cfc9eb0111d5c761ac5ba3e",
+    "state-after-loose_urpf.json": "001972090ef1a2d45580ee22909ffa38375c0b84d934cd946f77cc107ccb50e5",
+    "state-pk-withdrawn.json": "d89bf60bf052e6284975f675c8129c62658b2e7b7bf6882833e6d241aea57343",
+    "state-pk-restored.json": "a9ff18c7e8b2757e537a453aac9d51b5430e71a9537eae6c796bdc41bb6ed0de",
+    "state-peer-down.json": "09070e2b3be60ecc20cecb5137bccad62f6ac48855fe6e8c8115592c901de3d0",
+    "state-peer-restored.json": "f7dc8bd2fbf1d4822d4e27ae594d285a4440e857c6fb5ee90ad42f6d432a8cad"
+  },
+  "omitted": [
+    "commands",
+    "host network inventory",
+    "build paths",
+    "absolute host timestamps",
+    "resource time series",
+    "non-verifier result/state fields"
+  ],
+  "host_scope": "Host invariance/resource summaries are retained assertions; their omitted raw host inventory cannot be re-audited from this subset.",
+  "files": {
+    "independent-audit.json": "049dedaef5a74382b2d29cbd5eb896622d9f852d51ed146f8f06ba6153c995f0",
+    "result.json": "b7f9c4980fb8bca7b3852735b0ac4e693b33e1ee411a5a000762f0b5b0387e37",
+    "run_ts01_bgp01.py": "9dec6dda321154518113c29675ad91521f54ad292cde16034341ef39ec30131e",
+    "scene.json": "2d829c240ecb517f281787c91f17d458820b0d853b989cb68a0f90e06451419b",
+    "state-after-loose_urpf.json": "19a23b1e8b25780da1f8bde3853c76ccdc215fcafdf0163a227ac88bc14d6952",
+    "state-after-none.json": "796ed8bb6b6407ae09fd35edebab0ec759d7925842f7f1bcbcea31c650fc0519",
+    "state-after-strict_urpf.json": "76ea19fce4cc49c6a54db1f83f0780fece5fe85e7d47afc692cbe5fda9900c96",
+    "state-before-loose_urpf.json": "a7ae75d536f9b071eb97fe8a6da15f49330dd68ad1b416f507695ada338ee9d5",
+    "state-before-none.json": "b04f1ea988c915a5cce4006345abfdc38b568402dbbb8500fc93d4a16373e792",
+    "state-before-strict_urpf.json": "c5f08fdd0674da95edcacfadd0ede0a1bc0cdc7d7d341df43faa09774d0ac022",
+    "state-initial.json": "6a893392989d14d37720e0507d9fe883c6b6cb43bb59e0d0d2cd45e89eb49a1a",
+    "state-peer-down.json": "1041ffcad111ffc218347cd5eb2c2b7744993167e6a80a87fa1441111a82999c",
+    "state-peer-restored.json": "fccd80fa4698b9a75ca64726430519f0a507fe5060bca9ab4657c049a218a196",
+    "state-pk-restored.json": "e29eec9dc5aa22b51d95894a66a8fb3782b342ecdd0f4adb8fc6d8291a95c710",
+    "state-pk-withdrawn.json": "7df177d33e1119adbe8c410bd620545158dd899fc06ef77084e4f12c5af2e66b",
+    "ts01-bgp-01.json": "94221e3c7ec38e8be7ad2d902fb41f99e64661fa89b2e1d992bd6aa0feb8933e"
+  }
+}

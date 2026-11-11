@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "design_id": "k5-as-sampling-20261019-v1",
+  "layers": ["ipv4", "ipv6"],
+  "sizes": [100, 1000],
+  "seeds": [240001, 240002, 240003],
+  "edge_domains": ["union", "known"],
+  "algorithm": "full-role-stratified-frontier-v1",
+  "strata": "full_union_role x full_union_degree_band x inferred_provider_count_band",
+  "seed_rule": "uniform among top ceil(1 percent) eligible nodes by domain degree, ties by ASN",
+  "growth_rule": "largest unmet absolute stratum quota on connected frontier, seeded random ties and nodes; retain every induced edge",
+  "quota_rule": "proportional largest remainder in eligible largest component; no outcome-based tuning",
+  "control": "stratified uniform nodes with same quotas and seed, no connectivity constraint",
+  "known_domain": "sample on p2c/p2p edges only; preserve unknown/conflicting induced edges as inactive evidence",
+  "boundary": "save every full-union edge with exactly one selected endpoint; no invented reconnecting links",
+  "prefixes": "preserve all selected-AS observed prefix/source rows; observations are not ownership or executable addresses",
+  "replication": "seed sensitivity on a shared source graph, not independent Internet observations",
+  "acceptance": {
+    "required": ["exact_size", "domain_connected", "induced_edges_exact", "boundary_complete", "source_roles_preserved", "source_hash_matches", "seed_replay_equal"],
+    "diagnostic_only": ["degree_distribution", "role_distribution", "relationship_mix", "multi_upstream_retention", "boundary_loss", "uniform_control_comparison"],
+    "scientific_representativeness": "not established; report bias without accepting a universal representativeness threshold"
+  }
+}

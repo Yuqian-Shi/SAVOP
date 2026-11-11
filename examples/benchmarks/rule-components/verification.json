@@ -1,0 +1,260 @@
+{
+  "main_workloads_pass": true,
+  "checks": [
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "pass": true,
+      "rule_counts": [
+        1000,
+        1000,
+        1000
+      ],
+      "canonical_sha256": "3e641c5ba749d3ac0d683860304b6f28abf15c6618d732bf9a2bebf2abffba7c"
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "pass": true,
+      "rule_counts": [
+        10000,
+        10000,
+        10000
+      ],
+      "canonical_sha256": "7454179d5b679387471aac6349a2db10ea44e7743790f13cffcb6b621692cfa2"
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "pass": true,
+      "rule_counts": [
+        50000,
+        50000,
+        50000
+      ],
+      "canonical_sha256": "2798b8566f0178832f8291257bb9c0b7be9294d5a1f8d67edd7fa465ffcfe5c0"
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "pass": true,
+      "rule_counts": [
+        1000,
+        1000,
+        1000
+      ],
+      "canonical_sha256": "a61344017a7d890c2f947935e63514d62c04ab7a854e1ef9b62b71b6281166da"
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "pass": true,
+      "rule_counts": [
+        10000,
+        10000,
+        10000
+      ],
+      "canonical_sha256": "7107304a6236380a81abf7b95b00bda27a82a19013bf0f4d2d0fdf5241b711d3"
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "pass": true,
+      "rule_counts": [
+        50000,
+        50000,
+        50000
+      ],
+      "canonical_sha256": "eee2bbb64282f62712fcf14b869deb78e1fb8e7ab97d42e805988dc3ab84f5d8"
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "pass": true,
+      "rule_counts": [
+        1000,
+        1000,
+        1000
+      ],
+      "canonical_sha256": "d95d39ea8cf1fa10827fdb4a92345d5b37fdb39abd4ec4eec6bd11d8b6d89bd8"
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "pass": true,
+      "rule_counts": [
+        10000,
+        10000,
+        10000
+      ],
+      "canonical_sha256": "59bf451163c84a41da427cbdf47ab85dcace23db7f1706f43167ec4daef8759b"
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "pass": true,
+      "rule_counts": [
+        50000,
+        50000,
+        50000
+      ],
+      "canonical_sha256": "770f9cda163108a9b11bdeeba7c390c6f5add12db0b5818e34a45ff37eb25ae2"
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "pass": true,
+      "rule_counts": [
+        1000,
+        1000,
+        1000
+      ],
+      "canonical_sha256": "122c01d142097f60cc7098f06e8340b676c00bb76a3e9817fe76989088283be3"
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "pass": true,
+      "rule_counts": [
+        10000,
+        10000,
+        10000
+      ],
+      "canonical_sha256": "93ed3420273adf253427f6e50c801676f0ae14a9beb3a5c150c964b2b34c9fab"
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "pass": true,
+      "rule_counts": [
+        50000,
+        50000,
+        50000
+      ],
+      "canonical_sha256": "22214d4c67c7b2abacd719c3277c2e9d6b77254ade070ad7ca21b6d3102659ca"
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "pass": true,
+      "rule_counts": [
+        4000,
+        5000,
+        4000
+      ],
+      "canonical_sha256": "5d9fb526c51b4b8fddd5fc8d785098f74baeec53b4f14461d4add3d877596499"
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "pass": true,
+      "rule_counts": [
+        40000,
+        50000,
+        40000
+      ],
+      "canonical_sha256": "24bb7dc4a8e393406ca2c3b31a0177eec090eef2e9354393371e695706538313"
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "pass": true,
+      "rule_counts": [
+        200000,
+        250000,
+        200000
+      ],
+      "canonical_sha256": "b9b5510e6c9c60477d3b89726a5f7dc0c9e1b36af188a6ba45f5f84e61981bc1"
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "pass": true,
+      "rule_counts": [
+        4000,
+        5000,
+        4000
+      ],
+      "canonical_sha256": "c56f54803c8450ac71316e5231eccca5dd1ddb647ca5ef158200b1a2af3af967"
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "pass": true,
+      "rule_counts": [
+        40000,
+        50000,
+        40000
+      ],
+      "canonical_sha256": "7fb83828008c47e2149e856b49b4ddfe4f7299f2f9ad0ef7e822169b84c6dc05"
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "pass": true,
+      "rule_counts": [
+        200000,
+        250000,
+        200000
+      ],
+      "canonical_sha256": "87e4869aaee620c848624fdbc33784df6d53079bcdc2357c7e238db95756e4d5"
+    }
+  ],
+  "edge_probe": {
+    "name": "strict_urpf_lo_interface",
+    "equal": false,
+    "python": [
+      [
+        [
+          "192.0.2.0/24",
+          "lo",
+          "strict_urpf",
+          -1,
+          true
+        ]
+      ],
+      [
+        [
+          "192.0.2.0/24",
+          "lo",
+          "strict_urpf",
+          -1,
+          true
+        ]
+      ],
+      [
+        [
+          "192.0.2.0/24",
+          "lo",
+          "strict_urpf",
+          -1,
+          true
+        ]
+      ]
+    ],
+    "rust": [
+      [],
+      [],
+      []
+    ],
+    "interpretation": "component boundary differs; upstream route filtering not covered"
+  }
+}

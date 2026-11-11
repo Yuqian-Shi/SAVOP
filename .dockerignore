@@ -1,0 +1,15 @@
+.git
+.gitignore
+target
+agent/target
+savop_demo
+lab/results
+lab/data/topologies/raw
+lab/base_configs/itdk_slices
+fibw_work
+savop_run*
+savop_run_bench
+**/*.orig
+**/*.bak
+**/*.tmp
+**/*~

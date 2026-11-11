@@ -1,0 +1,24 @@
+BIRD-derived Router Source License Notice
+
+The source tree under `router/` is derived from the BIRD Internet Routing
+Daemon. Most BIRD source files in this directory are licensed under the GNU
+General Public License, version 2 or later (GPL-2.0-or-later), as indicated by
+their file headers and upstream packaging metadata.
+
+Known component license notes are preserved in:
+
+- `router/distro/pkg/deb/copyright`
+- individual source file headers
+
+Important examples from the upstream metadata:
+
+- `Files: *` uses `License: GPL-2+`.
+- `lib/heap.h` uses `License: LGPL-2+`.
+- `lib/md5.c` is public domain.
+- `lib/printf.c` uses `License: GPL-2`.
+
+Do not treat `router/` as MIT-licensed code. When redistributing SAVOP, keep
+this notice, the upstream file headers, and `router/distro/pkg/deb/copyright`
+with the source tree.
+
+Publication notice: imported downstream snapshot on 2026-11-10; original file notices remain applicable.

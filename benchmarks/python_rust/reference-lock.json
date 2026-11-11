@@ -1,0 +1,13 @@
+{
+  "repository": "https://github.com/NASP-THU/SAV-Open-Playground",
+  "revision": "0696df96e482c1ed7e437dd25b589509733bb6b8",
+  "files": {
+    "LICENSE": "8dc433825db392b05f3ed18c6ea8ec85af4e17767aa0e0834e57e29fec3f469f",
+    "sav_agent/LICENSE": "8dc433825db392b05f3ed18c6ea8ec85af4e17767aa0e0834e57e29fec3f469f",
+    "sav_agent/common/__init__.py": "901d824a437ea693c6f6742fd5d325d72ffb59ddbd2ebe997c7f49ac5656d403",
+    "sav_agent/common/sav_data_structure.py": "746b696d28bdf18f58ffa60dff227ceb5b012e00acc3cd99e7aa057bd79b605d",
+    "sav_agent/common/const_values.py": "1934cee69d492f6f3e2c0d5c5f82d6ed147d376961d3927e01e6c28cb1c841f5",
+    "sav_agent/sav_app/app_urpf.py": "0bd6f3795878808b6e8fd427bd442cf0698bafe5feaddd235a2b49f392d5056a",
+    "sav_agent/sav_app/app_fp_urpf.py": "d7430e4209e2d1543d99795b8184cc0024c7a683f7b20b3fa226a2556e43966e"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "k5-auto-reconcile-v2",
+  "scope": "strict/loose uRPF, single selected next-hop, synthetic 5AS, IPv4 and IPv6",
+  "units": "2 fresh namespace rebuilds per address family on one VM; packets and rebuilds are technical checks, not independent scientific replicates",
+  "schedule": [[4, 1], [6, 1], [6, 2], [4, 2]],
+  "order_reason": "dependency-ordered causal fault/recovery sequence, address-family order reversed between repeats; no population effect estimate",
+  "interval_ms": 200,
+  "command_timeout_ms": 800,
+  "auto_deadline_seconds": 25,
+  "stable_window_seconds": 3,
+  "deadline_seconds": 90,
+  "controls": [
+    "no-SAV packet before first manual enable",
+    "automatic boot installation; disable pauses; enable resumes",
+    "unchanged FIB and advancing counters do not reinstall",
+    "physical link down/up changes BIRD and FIB, Agent refreshes without manual install",
+    "unknown source drops after automatic update; legitimate traffic passes",
+    "missing and altered nft table repaired with unchanged FIB",
+    "FIB exit error, malformed JSON and timeout retain prior rules and recover",
+    "nft invalid atomic transaction and timeout retain prior rules then retry",
+    "failed disable returns error and remains paused",
+    "dry-run does not change installed generation or resume",
+    "auto application switch strict/loose with install=false",
+    "loose uRPF automatically permits added source prefix then denies its withdrawal"
+  ],
+  "packets": "10 checked UDP datagrams per probe, about 20 packets/sec, isolated namespaced endpoints only",
+  "excluded_claims": ["100/1000AS capacity", "ECMP/nhid support", "FP/EFP qualification", "zero loss during convergence", "full Internet topology representativeness", "persisted pause across process restart"],
+  "evidence": "commands JSONL, status snapshots, real FIB/BIRD/nft dumps, raw receiver stdout, exact probe tokens, binary/source hashes, independent verifier and negative controls"
+}

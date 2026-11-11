@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-01",
+  "sources": [
+    {"id":"caida-20261001-v4","kind":"as_rel","af":"ipv4","date":"2026-10-01","url":"https://publicdata.caida.org/datasets/as-relationships/serial-1/20261001.as-rel.txt.bz2","license_url":"https://www.caida.org/about/legal/aua/public_aua/","semantics":"inferred_relationship","citation":"The CAIDA AS Relationships Dataset, 2026-10-01; https://www.caida.org/catalog/datasets/as-relationships/"},
+    {"id":"caida-20261001-v6","kind":"as_rel","af":"ipv6","date":"2026-10-01","url":"https://publicdata.caida.org/datasets/as-relationships/serial-1/20261001.as-rel.v6-stable.txt.bz2","license_url":"https://www.caida.org/about/legal/aua/public_aua/","semantics":"inferred_relationship","citation":"The CAIDA AS Relationships Dataset, 2026-10-01; https://www.caida.org/catalog/datasets/as-relationships/"},
+    {"id":"caida-20230801-reference","kind":"historical_reference","af":"ipv4","date":"2023-08-01","url":"https://publicdata.caida.org/datasets/as-relationships/serial-1/20230801.as-rel.txt.bz2","license_url":"https://www.caida.org/about/legal/aua/public_aua/","semantics":"inferred_relationship","citation":"The CAIDA AS Relationships Dataset, 2023-08-01; https://www.caida.org/catalog/datasets/as-relationships/"},
+    {"id":"ris-rrc06-20261001","kind":"mrt","af":"mixed","date":"2026-10-01T00:00:00Z","collector":"rrc06","location":"Tokyo, JP","url":"https://data.ris.ripe.net/rrc06/2026.10/bview.20261001.0000.gz","license_url":"https://www.ris.ripe.net/docs/legal/","semantics":"observed_bgp_path","citation":"RIPE NCC Routing Information Service (RIS), rrc06 RIB 2026-10-01 00:00 UTC"},
+    {"id":"ris-rrc11-20261001","kind":"mrt","af":"mixed","date":"2026-10-01T00:00:00Z","collector":"rrc11","location":"New York, US","url":"https://data.ris.ripe.net/rrc11/2026.10/bview.20261001.0000.gz","license_url":"https://www.ris.ripe.net/docs/legal/","semantics":"observed_bgp_path","citation":"RIPE NCC Routing Information Service (RIS), rrc11 RIB 2026-10-01 00:00 UTC"},
+    {"id":"caida-readme","kind":"documentation","url":"https://publicdata.caida.org/datasets/as-relationships/serial-1/README.txt"},
+    {"id":"caida-aua","kind":"documentation","url":"https://www.caida.org/about/legal/aua/public_aua/"},
+    {"id":"ris-legal","kind":"documentation","url":"https://www.ris.ripe.net/docs/legal/"},
+    {"id":"ris-mrt-docs","kind":"documentation","url":"https://www.ris.ripe.net/docs/mrt/"}
+  ]
+}

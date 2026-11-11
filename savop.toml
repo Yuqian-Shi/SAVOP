@@ -1,0 +1,10 @@
+[layout]
+agent_dir = "agent"
+lab_dir = "lab"
+router_dir = "router"
+config_dir = "lab/base_configs"
+results_dir = "lab/results"
+raw_topology_dir = "lab/data/topologies/raw"
+itdk_slice_dir = "lab/base_configs/itdk_slices"
+run_dir = "savop_run_clab"
+bench_work_dir = "savop_run_bench"

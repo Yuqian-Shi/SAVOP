@@ -1,0 +1,2 @@
+-c ../../requirements-dev.lock
+psutil==7.1.0

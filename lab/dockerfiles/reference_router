@@ -1,0 +1,16 @@
+FROM savop_base
+ARG root_dir=./
+ENV root_dir=$root_dir
+
+RUN mkdir -p /root/savop/
+RUN mkdir -p /root/savop/logs
+RUN touch /root/savop/logs/access.log
+RUN touch /root/savop/logs/error.log
+RUN mkdir -p /usr/local/var/run
+
+COPY $root_dir/router/bird-original /usr/local/sbin/
+COPY $root_dir/router/birdc-original /usr/local/sbin/
+COPY $root_dir/router/birdcl-original /usr/local/sbin/
+
+
+WORKDIR /root/savop/

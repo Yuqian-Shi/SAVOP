@@ -1,0 +1,9 @@
+{
+  "analysis_script_sha256": "fc0edbf836f5cbe8fdec45e050438ece40fe288cf6368345cc00cc3feba7bff6",
+  "raw_sha256": "6c8624475a70c17c994786496847cacea3f3ef576b7be8e45d616415c384c973",
+  "design_sha256": "8b82fdd32228ecef2a26856239d6358843f77e3e65e4c401fc92e1ad994841bd",
+  "input_count_source": "design.schedule[pair_no].count; raw worker count is output rules",
+  "statistics": "7 paired technical repetitions; medians and observed ranges, no population inference",
+  "raw_rows": 504,
+  "cells": 36
+}

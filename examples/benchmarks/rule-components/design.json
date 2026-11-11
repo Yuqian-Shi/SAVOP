@@ -1,0 +1,3055 @@
+{
+  "seed": 20261019,
+  "scope": "original rule-generation functions plus in-memory table replacement/delta apply",
+  "excluded": [
+    "FIB polling/parsing/delta detection",
+    "BIRD",
+    "kernel/nft install",
+    "HTTP/RPDP",
+    "logging",
+    "network traffic"
+  ],
+  "full": "repeated generation of full table from prepared FIB; clear previous externally held table",
+  "update": "alternate prepared FIB states: 1% routes switch eth0 to eth4; Python native delta API vs Rust full rebuild",
+  "fp_output_effect": "1% input changes add a fifth interface to each 100-prefix origin; 4N -> 5N rules",
+  "warmup_calls": 2,
+  "update_initial_table": "generated untimed after warmup",
+  "cpu_affinity": [
+    2
+  ],
+  "repeats": 7,
+  "schedule": [
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 0,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 0,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 1,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 2,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 2,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 3,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 4,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 4,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 5,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 5,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "update",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "full",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 50000,
+      "mode": "full",
+      "iterations": 4,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "strict_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 1000,
+      "mode": "update",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 6,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "fp_urpf",
+      "family": 4,
+      "count": 10000,
+      "mode": "update",
+      "iterations": 10,
+      "repeat": 6,
+      "order": [
+        "python",
+        "rust"
+      ]
+    },
+    {
+      "app": "loose_urpf",
+      "family": 4,
+      "count": 1000,
+      "mode": "full",
+      "iterations": 100,
+      "repeat": 6,
+      "order": [
+        "rust",
+        "python"
+      ]
+    }
+  ],
+  "interpretation": "technical repetitions on one VM, not independent hardware or language-only causal effect",
+  "memory": "worker VmHWM includes imports, input adapters, both prepared states and warmup, not whole Agent",
+  "cpu": "fresh worker process user+system seconds, not core-loop-only CPU",
+  "process_wall": "spawn through exit including imports/input parse/warmup; excludes correctness serialization",
+  "core_wall": "perf_counter_ns / Instant over rule generation and in-memory application; per iteration",
+  "timeout_seconds": 120,
+  "minimum_available_memory_mib": 2048,
+  "validation": "full sorted rule values against each other AND independent expected mapping for A,B,A; count checked every timed process"
+}

@@ -1,3 +1,17 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Keep active source portable between Windows editing and Linux execution.
 * text=auto eol=lf
+*.rs text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+Cargo.lock text eol=lf
+.gitignore text eol=lf
+.dockerignore text eol=lf
+.gitattributes text eol=lf
+# Preserve measured/frozen example bytes so their published checksums remain valid.
+examples/** -text

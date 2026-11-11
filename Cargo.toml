@@ -1,0 +1,9 @@
+[workspace]
+resolver = "2"
+members = ["agent"]
+default-members = ["agent"]
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

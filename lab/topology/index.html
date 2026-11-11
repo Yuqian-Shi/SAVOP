@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>课题5 · AS连接地图</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<header><div><span class="eyebrow">课题5 / 拓扑数据底座</span><h1>AS连接地图</h1><p>全球数据可查询 · 局部连接可追溯 · 不是地理位置或物理光纤地图</p></div><div class="snapshot">2026年10月快照<br><small>CAIDA：10月1—5日观测窗口<br>RIS：10月1日 00:00 UTC</small></div></header>
+<main>
+<section class="toolbar" aria-label="查询设置">
+<label>数据层<select id="layer"><option value="ipv4">IPv4 · 2026-10</option><option value="ipv6">IPv6 · 2026-10</option><option value="historical">历史关系 · 2023-08</option></select></label>
+<form id="search"><label>自治系统 ASN<input id="asn" value="4134" inputmode="numeric" placeholder="例如 AS4134" required></label><button type="submit">查看连接</button></form>
+<label>展开范围<select id="hops"><option value="1">一跳邻域</option><option value="2">两跳邻域</option></select></label>
+<label>显示上限<select id="limit"><option>40</option><option selected>80</option><option>160</option><option>250</option></select></label>
+<label>连接证据<select id="evidence"><option value="all">全部</option><option value="inferred">含关系推断</option><option value="observed">含RIS观测</option></select></label>
+<label>绘图连线<select id="drawEdges"><option value="focus">分层连接（清晰）</option><option value="all">画全部邻域连接</option></select></label>
+</section>
+<section class="metrics" id="metrics" aria-label="全量数据统计"></section>
+<div id="status" role="status">正在读取已核验数据…</div>
+<div class="workspace">
+<section class="graph-panel"><div class="panel-heading"><h2>连接视图 <span id="viewTitle"></span></h2><button id="reset">重置视角</button></div>
+<div class="legend"><span class="legend-p2c">● 提供商—客户</span><span class="legend-p2p">● 对等</span><span class="legend-unknown">● 关系未知／冲突</span></div>
+<svg id="graph" viewBox="0 0 1000 600" role="img" aria-label="所选AS的连接关系图"></svg>
+<p class="hint">单击节点查看信息，双击展开；拖动节点／空白处，滚轮缩放。密集标签自动隐藏，可悬停查看ASN。清晰视图仅绘制邻域展开树，完整连线可切换；展开树不是BGP路由，方向也不代表单向转发。</p>
+<p class="notice" id="boundary"></p>
+<div class="actions"><button id="exportView">导出当前视图 JSON</button><a id="exportAll" class="button" href="/api/export?layer=ipv4">导出本层全部连接 CSV</a><a href="/api/sources" target="_blank" rel="noopener">来源与哈希</a><a href="/api/summary" target="_blank" rel="noopener">完整质量报告</a></div></section>
+<aside><h2 id="detailTitle">AS信息</h2><div id="detail">点击节点或连接查看详情。</div><h3>连接证据</h3><div id="edgeDetail">点击图中连线或邻居表中的“证据”。</div></aside>
+</div>
+<section class="neighbors"><div class="panel-heading"><h2>完整邻居列表 <span id="neighborCount"></span></h2><div><button id="prev">上一页</button><button id="next">下一页</button></div></div><p class="hint">列表不受图形显示上限或证据筛选限制；每页100条。未观测到不等于不存在。</p><table><thead><tr><th>邻居ASN</th><th>相对关系</th><th>推断来源</th><th>观测来源</th><th>操作</th></tr></thead><tbody id="neighborRows"></tbody></table></section>
+<footer>使用边界：CAIDA关系为推断，RIS路径为采集器观测，二者并非完全独立。图连通不等于符合BGP策略或实际报文可达。显示截断不是实验抽样；本轮未补造连接、策略、时延、SAV部署或Anycast站点。来源：The CAIDA AS Relationships Dataset, 2023-08-01 / 2026-10-01；RIPE NCC RIS, rrc06 / rrc11, 2026-10-01。</footer>
+</main>
+</body></html>

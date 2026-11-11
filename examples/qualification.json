@@ -1,0 +1,129 @@
+{
+  "schema": "savop-release-qualification-v1",
+  "release": "v0.1.0-alpha",
+  "qualification_date": "2026-11-10",
+  "source_archive_git_tree": "9987f9ca9ed483e1e7fc78794a9c6b3d0f59feb2",
+  "tree_note": "Clean archive and network candidate have the same functional source. Final release adds documentation, CI adjustments and this summary.",
+  "clean_source": {
+    "rust_tests_passed": 71,
+    "rust_checks": [
+      "rustfmt",
+      "clippy",
+      "release build"
+    ],
+    "source_log_sha256": "dab46b9c71143ab7c361d49f9c27be772e6d494638a12648b3accb12ff1653b5",
+    "router_build_passed": true,
+    "router_build_log_sha256": "4a81f183ffe89918c063ef178f05bc15772c2296002463cb202dbb91f5188651",
+    "python": {
+      "validation": {
+        "passed": 61,
+        "skipped": 7,
+        "log_sha256": "d6ecd722db5e81042e833eef0da612afed2e23ccd19e869bdd8e641c4e8feb13"
+      },
+      "topology": {
+        "passed": 68,
+        "skipped": 0,
+        "log_sha256": "c1fcb92b2414b34ff79b99213044fa79cc3130e36134fbb05892746de7842fb7"
+      },
+      "benchmark": {
+        "passed": 5,
+        "skipped": 0,
+        "log_sha256": "deace1ff20b83ef177f98b3d7eb309470256f26b5202d071165af9e1b21303de"
+      }
+    }
+  },
+  "ts01": [
+    {
+      "run_id": "release-r1",
+      "independent_checks_passed": 44,
+      "probe_groups": 11,
+      "sent": 110,
+      "received": 70,
+      "expected_sav_drops": 40,
+      "peer_stream_sent": 600,
+      "peer_stream_received": 600,
+      "peer_stream_missing": 0,
+      "result_sha256": "a02d8072792a4265ed9613cf9796921ea9e468c7e0357abdd186cf21a9147baa",
+      "audit_log_sha256": "63db7533db79607fd324f0c52d2b00cbed5f401647b36abf025600c5acac406a"
+    },
+    {
+      "run_id": "release-r2",
+      "independent_checks_passed": 44,
+      "probe_groups": 11,
+      "sent": 110,
+      "received": 70,
+      "expected_sav_drops": 40,
+      "peer_stream_sent": 600,
+      "peer_stream_received": 600,
+      "peer_stream_missing": 0,
+      "result_sha256": "6d5319279e791d0ea59fc0df430651b7be7381bc479c224ae8eba913e773917a",
+      "audit_log_sha256": "fb80664a36d7253a07bb76e86253b1ddeafa01d10e64881ad249a2aa8f176d31"
+    },
+    {
+      "run_id": "release-r3",
+      "independent_checks_passed": 44,
+      "probe_groups": 11,
+      "sent": 110,
+      "received": 70,
+      "expected_sav_drops": 40,
+      "peer_stream_sent": 600,
+      "peer_stream_received": 600,
+      "peer_stream_missing": 0,
+      "result_sha256": "d9e4b6e544952d01e94256dd267a3733f119f2012e9a1c2de9a84414b6055604",
+      "audit_log_sha256": "e7667ad4856d22437c42aa2739163578c5f3c01ae354df685976f7f59bc5f1a4"
+    }
+  ],
+  "automatic_updates": {
+    "mode": "two release regressions; pilot schedule, not the historical four-run schedule",
+    "records": [
+      {
+        "run": "auto-v4-r1",
+        "family": 4,
+        "repeat": 1,
+        "checks": 43,
+        "bursts": 25,
+        "sent": 250,
+        "received": 120,
+        "expected_drops": 130,
+        "lifecycle_verified": false,
+        "result_sha256": "336605639e28762f5049bc55e394afc4c8c72bd21e19c619b7eec519f1abac83",
+        "commands_sha256": "71921cae2f8fecbf2ef61585de14a60434b9de969b4a48653ae6b51353db5ad3"
+      },
+      {
+        "run": "auto-v6-r1",
+        "family": 6,
+        "repeat": 1,
+        "checks": 43,
+        "bursts": 25,
+        "sent": 250,
+        "received": 120,
+        "expected_drops": 130,
+        "lifecycle_verified": false,
+        "result_sha256": "4cad5d26c3596d2a2f9864b347f85066cecef1959100520ad0b037fe166c4840",
+        "commands_sha256": "61d89c4fc468eb1eafaf3340aba039dbb04aabc67b88229f7c5139824fce7957"
+      }
+    ],
+    "negative_controls": {
+      "rx-fabricated": "rejected",
+      "no-generation": "rejected",
+      "error-hidden": "rejected",
+      "paused-false": "rejected",
+      "host-route-changed": "rejected"
+    },
+    "audit_sha256": "8e366dd51b01e72e2bf1f11ceb85e2e714209d89a13bde77acf698d3c100dfea"
+  },
+  "component_benchmark": {
+    "measurements": 504,
+    "summary_rows": 36,
+    "recomputed_numeric_values": 540,
+    "a_b_a_rule_equivalence_checks": 18,
+    "public_data": "benchmarks/rule-components/"
+  },
+  "evidence_scope": "Summary of completed checks; original machine logs are retained privately. The bundled TS01 subset and benchmark data have separate public verifiers.",
+  "limits": [
+    "same-VM functional qualification, not independent-hardware replication",
+    "no 1000-AS capacity certification",
+    "component benchmark is not end-to-end speedup",
+    "no general zero-loss convergence guarantee"
+  ]
+}

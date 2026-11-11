@@ -1,0 +1,34 @@
+name: Source checks
+on:
+  push:
+    branches: [main, rust-preview]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Install source-check dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck jq
+          rustup toolchain install 1.93.1 --profile minimal --component rustfmt --component clippy
+          rustup default 1.93.1
+          python3 -m pip install -r lab/validation/requirements.txt -r lab/topology/requirements.txt
+      - name: Rust and shell source checks
+        run: bash lab/check_source.sh
+      - name: Offline Python tests
+        run: |
+          python3 -m unittest discover -s lab/validation -p 'test_*.py'
+          python3 -m unittest discover -s lab/topology -p 'test_*.py'
+          python3 -m unittest discover -s benchmarks/python_rust -p 'test_*.py'
+      - name: Compile the current Rust benchmark adapter
+        run: SAVOP_SOURCE_ROOT="$PWD" cargo build --locked --release --manifest-path benchmarks/python_rust/Cargo.toml
+      - name: Publication inventory and pattern scan
+        run: python3 lab/check_publication.py --report /tmp/savop-publication-check.json
+      - name: Recompute public benchmark table
+        run: python3 benchmarks/python_rust/verify_public_result.py examples/benchmarks/rule-components

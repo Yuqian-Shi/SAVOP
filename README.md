@@ -1,48 +1,105 @@
-# SAV Open Playground
+# SAVOP
 
-## Overview
+Rust-based, router-level experiments for source address validation.
 
-SAV Open Playground is a comprehensive project designed to simulate and test Source Address Validation (SAV) mechanisms in a controlled environment. The project includes multiple components such as SAV agents, control planes, data planes, and various testing tools to ensure the effectiveness and efficiency of SAV implementations.
+This is an independently maintained engineering derivative of NASP-THU's
+SAV Open Playground, not an official upstream release.[^1] The preview scope is
+small-scale BGP/SAV experiments, automatic strict/loose uRPF reconciliation,
+and independently checkable evidence. The 1000-AS DES/ECS backend is not implemented.
 
-## Project Structure
+See the [quick start](docs/quickstart.md), [support matrix](docs/support-matrix.md),
+[validation guide](docs/validation.md), [benchmark guide](benchmarks/python_rust/README.md),
+and [upstream provenance](docs/upstream.md).
 
-The project is organized into several directories, each serving a specific purpose:
+SAVOP is a router-level SAV emulator for studying BGP convergence and source address validation mechanisms. The active implementation uses Rust per-router agents, BIRD, and containerlab.
 
-- `sav_agent/`: Contains the source code for the SAV agent module, responsible for interacting with SAV apps and managing SAV rules.
-- `sav_control/`: Includes scripts and configurations for Controlling an experiment.
-- `sav_router/`: Contains the router implementation based on [BIRD Daemon Project](https://bird.network.cz/) and related configurations, including protocol definitions and filter instructions.
+## Repository Layout
 
-## Key Components
+- `agent/`: Rust agent, lab generator, route probe, SAV-table probe, and topology slicing tools. SAV mechanisms live under `agent/src/sav_apps/`; see `agent/src/sav_apps/README.md` for adding new SAV apps.
+- `lab/`: emulator configs, Dockerfiles, RPKI helpers, benchmarks, and compatibility wrappers.
+- `router/`: BIRD-based router source used by the emulator runtime.
+- `savop_demo/`: retained historical implementations, experiment data and demo assets. It is not part of the active Cargo workspace or runtime; keep it out of new commits and root Docker build contexts.
 
-### SAV Agent
+Large downloaded topology datasets, generated lab directories, benchmark results, Rust build artifacts, and BIRD build outputs are intentionally ignored by git.
 
-The SAV agent module is responsible for interacting with SAV apps, generating SAV rules, and managing event buffers. It provides interfaces for SAV apps to fetch required information and send messages to other agents.
+Repository paths are declared in `savop.toml`. The `savop` CLI reads that file and passes the resolved paths to internal tools, so normal workflows do not depend on absolute machine paths or the caller's current subdirectory.
 
-### Control Plane
+## Quick Start
 
-The control plane manages the overall experiment setup, configuration generation, and distribution. It includes scripts for monitoring resource usage, managing containers, and running experiments.
+Use a dedicated Linux VM with Docker, Rust, BIRD build dependencies and Python
+test dependencies installed; see the [dependency list](docs/quickstart.md).
+The Rust Agent is the runtime; Python is used by topology and test tools.
 
-### Data Plane
+```sh
+export SAVOP_ROOT="$(pwd)"
 
-The data plane handles the application of SAV rules using tools like iptables and traffic control. It includes classes for managing IP tables and access control lists.
+# Build from source without running the broad legacy host installer.
+cargo build --locked --release --workspace --bins
+target/release/savop router build
+target/release/savop image build runtime
+target/release/savop doctor
+target/release/savop lab run 5_nodes_v6.json
+```
 
-### Router
+On an already prepared machine:
 
-The router implementation includes protocol definitions, filter instructions, and various utilities for managing routing protocols. It supports multiple protocols such as BGP, OSPF, and RIP. The implementation is based on the [BIRD Daemon Project](https://bird.network.cz/).
+```sh
+export SAVOP_ROOT="$(pwd)"
+cargo build --release --workspace --bins
+target/release/savop router build
+target/release/savop image build runtime
+target/release/savop doctor
+target/release/savop lab run 5_nodes_v6.json
+```
 
-## Getting Started
+The default path is containerlab + Rust. Legacy non-containerlab lab builders and Python agent paths have been removed from the active workflow.
+The default five-node example is one AS, not the [5-AS / 50-node fixture](docs/validation.md).
+The latter uses an isolated Docker/network-namespace harness rather than the
+containerlab management network. Its explicit-refresh SAV arms and the separate
+automatic-update test must not be conflated.
 
-### Prerequisites
+## Main Entrypoint
 
-- Python 3.x
-- Docker
-- iptables
-- dstat
+- `target/release/savop`: primary CLI for router builds, image builds, lab generation, runs, benchmarks, topology slicing, and path inspection.
+- `lab/bench_scale.sh` and `lab/bench_fib_window.sh`: compatibility wrappers used by the CLI.
 
-### Usage
-1. define your own topo for the experiment and place them into `sav_control/basic_configs`
-2. run the experiment using `python3 {SAV_PLAYGROUND}/sav_control/sav_control_master.py -e {your_config_file without .json}`
+See `lab/README.md` for detailed usage and tuning knobs.
+
+
+## Release Checks
+
+For source checks without installing system packages, building Docker images or
+starting an experimental network, run this on the Linux development machine:
+
+```sh
+bash lab/check_source.sh --offline
+```
+
+Omit `--offline` only when Cargo needs to download locked dependencies. The check
+requires Cargo, rustfmt, Clippy, ShellCheck and jq. To keep build artifacts off the
+system disk, set `CARGO_TARGET_DIR` to a dedicated data-disk directory. These checks
+cover formatting, shell syntax/lint, JSON syntax, Rust lint/tests and release
+binaries; they do not establish SAV correctness or multi-AS deployment readiness.
+
+Run these checks before publishing or tagging a release:
+
+```sh
+bash lab/release_check.sh
+```
+
+The full release check builds router binaries and a Docker image, then starts a
+lab. Run it only in a prepared, isolated environment. Its default
+`5_nodes_v6.json` smoke test has five routers in one AS, not five independent ASes.
+
+Use git for publishing so ignored local datasets and build artifacts are not uploaded.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+SAVOP is released under multiple licenses. SAVOP-owned Rust/lab code outside
+`router/` is MIT-licensed. `router/` contains BIRD-derived GPL-licensed source.
+See `LICENSE` and `router/LICENSE`.
+
+Original upstream notices and complete applicable license texts are retained in
+[`LICENSES/`](LICENSES/). See [third-party notices](THIRD_PARTY_NOTICES.md).
+
+[^1]: NASP-THU. SAV Open Playground, upstream reference commit `0696df96e482c1ed7e437dd25b589509733bb6b8`. https://github.com/NASP-THU/SAV-Open-Playground/tree/0696df96e482c1ed7e437dd25b589509733bb6b8

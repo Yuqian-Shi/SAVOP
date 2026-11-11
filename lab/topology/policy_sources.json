@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {"id":"ripe-public-services-terms","kind":"documentation","url":"https://www.ripe.net/about-us/legal/terms-of-service/","purpose":"Supplement the JavaScript-rendered RIS legal landing page; preserve primary terms for research-use review."},
+    {"id":"ripe-raw-data-terms","kind":"documentation","url":"https://www.ripe.net/analyse/raw-data-sets/terms-conditions/","purpose":"Preserve the terms linked by RIPE raw-data pages; no external publication or commercial redistribution authorized."},
+    {"id":"ris-commercial-terms","kind":"documentation","url":"https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris/commercial-use/","purpose":"Preserve additional conditions for any later commercial use; current tool is local research only."}
+  ]
+}

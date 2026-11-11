@@ -1,0 +1,21 @@
+{
+  "schema": "k5-five-as-dynamic-v3",
+  "fixture": "five unique private ASNs; provider 1->2,1->3,2->4,3->4,3->5; peer 2--3",
+  "seed": 240006,
+  "confirmatory_rebuilds": {"ipv4": 3, "ipv6": 3},
+  "replication_scope": "same VM, technical reconstruction; not independent hardware or Internet samples",
+  "stable_window_seconds": 3,
+  "deadline_seconds": 90,
+  "network_setup": {"ipv6_static_address_retention": "net.ipv6.conf.default.keep_addr_on_down=1 in containers only", "reason": "admin link flap must preserve configured addresses; default-zero loss was reproduced separately", "prior_failure_retained": "dynamic-01-v6-r1"},
+  "dataplane_revision": {"neighbor_discovery": "Exact configured IPv6 neighbor, ingress interface, NS/NA types, hoplimit 255 and code 0, input hook only; not an ND authentication claim", "prior_failures_retained": ["dynamic-02-v6-r1", "diagnostic-v6-01"], "unchanged_gate": "90 seconds; no relaxation"},
+  "packet_count_per_burst": 10,
+  "stages": [
+    {"id": "link-change", "steps": ["strict initial pass", "3--4 down, reverse path 3->2->4", "stale strict table drops legal packets", "controller refresh restores delivery", "3--4 up, reverse path 3->4", "stale strict table drops legal packets", "controller refresh restores delivery"]},
+    {"id": "asymmetry", "steps": ["AS4 uses AS2 for AS5; AS3 still reaches AS4 directly", "no-SAV passes", "strict drops legitimate traffic", "loose passes", "no-SAV passes again", "remove injected host route"]},
+    {"id": "anycast", "steps": ["AS4 and AS5 advertise same dedicated lab prefix", "client AS1 delivery agrees with selected BGP origin", "disable only chosen origin's anycast static protocol", "all packets reach surviving site", "restore protocol", "delivery agrees with current selected origin"]}
+  ],
+  "SAV_update_mode": "explicit controller refresh after observed route stability; NOT autonomous Agent convergence",
+  "timing_scope": "event-command to observed stable network includes observation overhead and 3-second hold; not pure BGP convergence or outage duration",
+  "anycast_scope": "UDP site delivery only; no DSR, TCP session migration or application SLA claim",
+  "retention": "retain failed pilots, complete commands, raw receiver output, per-burst nft drop counters and all snapshots"
+}
