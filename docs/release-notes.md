@@ -1,8 +1,16 @@
-# SAVOP v0.1.0-alpha
+# SAVOP v0.1.0
 
-This is a source-only alpha of the independently maintained SAVOP downstream
+This is a source-only preview of the independently maintained SAVOP downstream
 fork. It retains the history of [NASP-THU/SAV-Open-Playground](https://github.com/NASP-THU/SAV-Open-Playground)
 and identifies the imported baseline in [the provenance record](upstream.md).
+
+## 🏷️ Version naming
+
+The current version remains `v0.1.0`. Routine updates are distinguished by Git
+commits, without automatically adding alpha, date or fix suffixes. A suffix is
+reserved for a particularly important milestone confirmed by the maintainer.
+Qualification and prerelease status are recorded separately from the version
+label; this naming change does not expand the validated capabilities.
 
 ## 📦 Included
 
